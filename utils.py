@@ -1,0 +1,25 @@
+from datetime import date, datetime
+
+
+def input_int(prompt: str) -> int:
+    while True:
+        try:
+            return int(input(prompt))
+        except ValueError:
+            print("Ошибка: введите целое число.")
+
+
+def input_float(prompt: str) -> float:
+    while True:
+        try:
+            return float(input(prompt))
+        except ValueError:
+            print("Ошибка: введите число.")
+
+
+def input_date(prompt: str) -> date:
+    while True:
+        try:
+            return datetime.strptime(input(prompt), "%d.%m.%Y").date()
+        except ValueError:
+            print("Ошибка: неверный формат даты. Используйте ДД.ММ.ГГГГ.")
