@@ -77,6 +77,17 @@ def add_review(
     return review
 
 
+def get_review_by_id(
+    reviews: List[Review],
+    review_id: int,
+) -> Optional[Review]:
+    """Найти отзыв по идентификатору или вернуть None."""
+    for review in reviews:
+        if review.id == review_id:
+            return review
+    return None
+
+
 def get_reviews_for_tour(
     reviews: List[Review],
     tour: Tour,
