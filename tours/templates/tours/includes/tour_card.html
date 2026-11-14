@@ -1,0 +1,22 @@
+<article class="card tour-card mb-3">
+    <div class="card-body">
+        <h2 class="card-title">
+            {{ tour.name|default:"Без названия" }}
+        </h2>
+
+        <p class="card-text">
+            Место: {{ tour.place }}
+        </p>
+
+        <p class="card-text">
+            Цена: {{ tour.price }} руб.
+        </p>
+
+        <a
+            href="{% url 'tours:detail' tour.id %}"
+            class="btn btn-primary"
+        >
+            Подробнее
+        </a>
+    </div>
+</article>

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if tour %}
+        {{ tour.name }} – Отзывы об экскурсиях
+    {% else %}
+        Экскурсия не найдена – Отзывы об экскурсиях
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% if tour %}
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">
+                    {{ tour.name }}
+                </h1>
+
+                <p class="card-text">
+                    <strong>ID:</strong> {{ tour.id }}
+                </p>
+
+                <p class="card-text">
+                    <strong>Место:</strong> {{ tour.place }}
+                </p>
+
+                <p class="card-text">
+                    <strong>Цена:</strong> {{ tour.price }} руб.
+                </p>
+
+                <p class="card-text">
+                    <strong>Длительность:</strong> {{ tour.duration }} ч.
+                </p>
+
+                <p class="card-text">
+                    <strong>Средний рейтинг:</strong>
+                    {% if rating %}
+                        <span class="badge bg-primary">
+                            {{ rating|floatformat:1 }} из 5
+                        </span>
+                    {% else %}
+                        <span class="badge bg-secondary">
+                            отзывов пока нет
+                        </span>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    {% else %}
+        <h1 class="text-danger">
+            Экскурсия не найдена
+        </h1>
+        <p>
+            Экскурсия с указанным идентификатором отсутствует.
+        </p>
+    {% endif %}
+
+    <a
+        href="{% url 'tours:list' %}"
+        class="btn btn-outline-secondary mt-3"
+    >
+        ← к списку экскурсий
+    </a>
+{% endblock %}

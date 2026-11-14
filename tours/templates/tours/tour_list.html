@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Экскурсии – Отзывы об экскурсиях
+{% endblock %}
+
+{% block content %}
+    <h1>Экскурсии</h1>
+
+    <p>
+        Всего экскурсий: {{ tours|length }}
+    </p>
+
+    {% for tour in tours %}
+        {% include "tours/includes/tour_card.html" %}
+    {% empty %}
+        <p>Экскурсии не найдены.</p>
+    {% endfor %}
+{% endblock %}

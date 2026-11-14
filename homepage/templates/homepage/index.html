@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Главная – Отзывы об экскурсиях
+{% endblock %}
+
+{% block content %}
+    <h1 class="display-4">Отзывы об экскурсиях</h1>
+
+    <p class="lead">
+        Система отзывов об экскурсиях.
+    </p>
+    <p>Основные разделы:</p>
+    <a href="{% url 'tours:list' %}" class="btn btn-primary me-2">
+        Экскурсии
+    </a>
+    <a href="{% url 'reviews:list' %}" class="btn btn-secondary">
+        Отзывы
+    </a>
+{% endblock %}

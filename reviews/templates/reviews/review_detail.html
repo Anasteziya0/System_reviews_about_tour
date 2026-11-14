@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if review %}
+        Отзыв №{{ review.id }} – Отзывы об экскурсиях
+    {% else %}
+        Отзыв не найден – Отзывы об экскурсиях
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% if review %}
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">
+                    Отзыв №{{ review.id }}
+                </h1>
+
+                <p class="card-text">
+                    <strong>Экскурсия:</strong>
+                    {{ review.tour.name }}
+                </p>
+
+                <p class="card-text">
+                    <strong>Автор:</strong>
+                    {{ review.user.name }}
+                </p>
+
+                <p class="card-text">
+                    <strong>Дата:</strong>
+                    {{ review.review_date }}
+                </p>
+
+                <p class="card-text">
+                    <strong>Оценка:</strong>
+                    {{ review.rating }} из 5
+                    {% include "reviews/includes/review_status.html" %}
+                </p>
+
+                <p class="card-text">
+                    <strong>Комментарий:</strong>
+                    {{ review.comment }}
+                </p>
+            </div>
+        </div>
+    {% else %}
+        <h1 class="text-danger">
+            Отзыв не найден
+        </h1>
+        <p>
+            Отзыв с указанным идентификатором отсутствует.
+        </p>
+    {% endif %}
+
+    <a
+        href="{% url 'reviews:list' %}"
+        class="btn btn-outline-secondary mt-3"
+    >
+        ← к списку отзывов
+    </a>
+{% endblock %}

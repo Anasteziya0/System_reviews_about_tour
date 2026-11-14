@@ -1,0 +1,13 @@
+{% if review.rating >= 4 %}
+    <span class="badge bg-success review-status review-status-positive">
+        {{ review.get_status }}
+    </span>
+{% elif review.rating == 3 %}
+    <span class="badge bg-warning text-dark review-status review-status-neutral">
+        {{ review.get_status }}
+    </span>
+{% else %}
+    <span class="badge bg-danger review-status review-status-negative">
+        {{ review.get_status }}
+    </span>
+{% endif %}

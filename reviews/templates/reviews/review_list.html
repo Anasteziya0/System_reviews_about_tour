@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Отзывы – Отзывы об экскурсиях
+{% endblock %}
+
+{% block content %}
+    <h1>Отзывы</h1>
+
+    <p>
+        Всего отзывов: {{ reviews|length }}
+    </p>
+
+    <ul class="list-group">
+        {% for review in reviews %}
+            <li class="list-group-item d-flex justify-content-between">
+                <div>
+                    <a href="{% url 'reviews:detail' review.id %}">
+                        Отзыв №{{ review.id }}: {{ review.tour.name }}
+                    </a>
+                    <div class="text-muted">
+                        {{ review.user.name }}, {{ review.review_date }},
+                        оценка {{ review.rating }} / 5
+                    </div>
+                </div>
+                {% include "reviews/includes/review_status.html" %}
+            </li>
+        {% empty %}
+            <li class="list-group-item">
+                Отзывы не найдены.
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
